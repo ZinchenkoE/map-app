@@ -1,0 +1,8 @@
+#setPoint{
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fc7e03;
+  width: 300px;
+}

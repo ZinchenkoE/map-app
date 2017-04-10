@@ -1,20 +1,32 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { BrowserModule }        from '@angular/platform-browser';
+import { NgModule }             from '@angular/core';
+import { CommonModule }         from '@angular/common';
+import { FormsModule }          from '@angular/forms';
+import { HttpModule }           from '@angular/http';
+import { Routes, RouterModule } from '@angular/router';
+import { AppComponent }         from './app.component';
+import { SearchComponent }      from "./search/search.component";
 
-import { AppComponent } from './app.component';
+const appRoutes: Routes =[
+  { path: 'search', component: SearchComponent},
+  { path: '**', redirectTo: '/search'}
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
