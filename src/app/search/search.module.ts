@@ -22,4 +22,4 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
   providers: [],
   bootstrap: [SetLocationComponent]
 })
-export class AppModule { }
+export class SearchModule { }
