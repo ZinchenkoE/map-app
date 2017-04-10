@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
 import { SetLocationComponent } from '../search/set-location.component'
 
+
 @Component({
   selector: 'search-app',
   templateUrl: './search.component.html',
@@ -16,6 +17,7 @@ export class SearchComponent {
   onSaveLocation(){
     this.showPopup = false;
   }
+
 
 
 }
