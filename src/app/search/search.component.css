@@ -1,16 +1,17 @@
-#setPoint{
-  position: absolute;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #fc7e03;
-  width: 300px;
+#setPoint {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fc7e03;
+    width: 300px;
 }
-#locationLabel{
-  position: absolute;
-  top: 150px;
-  font-size: 20px;
-  font-family: sans-serif;
-  text-align: center;
-  width: 100%;
+
+#locationLabel {
+    position: absolute;
+    top: 150px;
+    font-size: 20px;
+    font-family: sans-serif;
+    text-align: center;
+    width: 100%;
 }
