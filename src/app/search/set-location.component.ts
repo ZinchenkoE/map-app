@@ -10,6 +10,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class SetLocationComponent  {
     lat: number = 50.015702;
     lng: number = 36.220385;
+    search: string;
 
     @Output() onSaveLocation: EventEmitter<boolean>;
 

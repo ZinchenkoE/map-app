@@ -29,3 +29,16 @@
     width: 300px;
     bottom: 50px;
 }
+#searchInput{
+    position: absolute;
+    width: 350px;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    line-height: 50px;
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);
+    outline: none;
+    border: 1px solid #eee;
+    padding-left: 50px;
+    font-size: 14px;
+}
