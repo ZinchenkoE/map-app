@@ -9,13 +9,17 @@ import { SetLocationComponent } from '../search/set-location.component'
 })
 export class SearchComponent {
   showPopup: boolean = false;
+  lat: number;
+  lng: number;
 
   showPopupFunc(){
     this.showPopup = true;
   }
 
-  onSaveLocation(){
+  onSaveLocation($event){
     this.showPopup = false;
+    this.lat = $event.lat;
+    this.lng = $event.lng;
   }
 
 

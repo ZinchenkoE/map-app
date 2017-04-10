@@ -6,3 +6,11 @@
   background: #fc7e03;
   width: 300px;
 }
+#locationLabel{
+  position: absolute;
+  top: 150px;
+  font-size: 20px;
+  font-family: sans-serif;
+  text-align: center;
+  width: 100%;
+}

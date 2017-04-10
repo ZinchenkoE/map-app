@@ -29,16 +29,35 @@
     width: 300px;
     bottom: 50px;
 }
-#searchInput{
+#searchInputBox{
     position: absolute;
-    width: 350px;
+    width: 400px;
     top: 150px;
     left: 50%;
     transform: translateX(-50%);
-    line-height: 50px;
+    font-family: sans-serif;
     box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);
+    font-size: 16px;
+}
+#searchInput{
+    width: 100%;
+    box-sizing: border-box;
+    line-height: 50px;
     outline: none;
     border: 1px solid #eee;
     padding-left: 50px;
-    font-size: 14px;
+    opacity: .9;
+    font-size: 16px;
+}
+
+#autocompleteUl{}
+#autocompleteUl li{
+    padding-left: 50px;
+    line-height: 50px;
+    display: block;
+    background: #fff;
+}
+#autocompleteUl li:hover{
+    background: #e1e1e1;
+    cursor: pointer;
 }

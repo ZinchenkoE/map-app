@@ -1,22 +1,32 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-// import {AutocompleteService} from '../services/autocomplete.service';
-// import { AgmCoreModule }        from 'angular2-google-maps/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import {AutocompleteService} from './autocomplete.service';
 
 @Component({
     selector: 'set-location',
     templateUrl: './set-location.component.html',
     styleUrls: ['./set-location.component.css'],
+    providers: [ AutocompleteService ],
 })
-export class SetLocationComponent  {
-    lat: number = 50.015702;
-    lng: number = 36.220385;
+export class SetLocationComponent implements OnInit {
+    @Input()lat: number;
+    @Input()lng: number;
+
+    @Output() onSaveLocation: EventEmitter<any>;
+
+    latCenter: number;
+    lngCenter: number;
+
+    addressArray = [];
+
     search: string;
 
-    @Output() onSaveLocation: EventEmitter<boolean>;
+    constructor(private _autocompleteService: AutocompleteService) {
+        this.onSaveLocation = new EventEmitter<any>();
+    }
 
-    // constructor(private _autocompleteService: AutocompleteService) { }
-    constructor() {
-        this.onSaveLocation = new EventEmitter<boolean>();
+    ngOnInit() {
+        this.latCenter = this.lat || 50.015702;
+        this.lngCenter = this.lng || 36.220385;
     }
 
     getMyLocation(){
@@ -26,16 +36,34 @@ export class SetLocationComponent  {
     }
 
     saveLocation(){
-        this.onSaveLocation.emit()
+        let lat: number = this.lat;
+        let lng: number = this.lng;
+        this.onSaveLocation.emit({lat, lng});
     }
 
     setPosition(position){
-        this.lat = position.coords.latitude;
-        this.lng = position.coords.longitude;
-        console.log(this.lat, this.lng);
+        this.lat       = position.coords.latitude;
+        this.lng       = position.coords.longitude;
+        this.latCenter = position.coords.latitude;
+        this.lngCenter = position.coords.longitude;
     }
 
-    mapClick(q){
-        console.log(this);
+    mapClick($event){
+        this.lat = $event.coords.lat;
+        this.lng = $event.coords.lng;
+    }
+
+    searchAddress(){
+        this._autocompleteService.getAddress(this.search, this.setAddressArray.bind(this));
+    }
+
+    setAddressArray(res){
+        this.addressArray = res;
+    }
+
+    clickAutocompleteItem($event){
+        this.lat = +$event.target.dataset.lat;
+        this.lng = +$event.target.dataset.lng;
+        this.addressArray = [];
     }
 }
