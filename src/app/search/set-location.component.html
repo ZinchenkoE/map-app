@@ -1,16 +1,14 @@
 <sebm-google-map [latitude]="latCenter" [longitude]="lngCenter" (mapClick)="mapClick($event)">
-    <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+	<sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
 </sebm-google-map>
 <button id="getLocation" class="btns" (click)="getMyLocation()">get my location</button>
 <button id="saveLocation" class="btns" (click)="saveLocation()">save location</button>
 <div id="searchInputBox">
-    <input id="searchInput" [(ngModel)]="search" (input)="searchAddress()" placeholder="Address">
-    <ul id="autocompleteUl">
-        <li *ngFor="let item of addressArray"
-            (click)="clickAutocompleteItem($event)"
-            [attr.data-lat]="item.geometry.location.lat"
-            [attr.data-lng]="item.geometry.location.lng"
-        >{{item.formatted_address}}
-        </li>
-    </ul>
+	<input id="searchInput" [(ngModel)]="search" (input)="searchAddress()" placeholder="Address">
+	<ul id="autocompleteUl">
+		<li *ngFor="let item of addressArray"
+			(click)="clickAutocompleteItem(item.geometry.location.lat, item.geometry.location.lng)"
+		>{{item.formatted_address}}
+		</li>
+	</ul>
 </div>
