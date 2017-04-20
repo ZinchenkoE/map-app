@@ -11,7 +11,7 @@ export class SetLocationComponent implements OnInit {
 	@Input() lat: number;
 	@Input() lng: number;
 
-	@Output() onSaveLocation: EventEmitter<any>;
+	@Output() onSaveLocation: EventEmitter<LatLng>;
 
 	latCenter: number;
 	lngCenter: number;
@@ -21,7 +21,7 @@ export class SetLocationComponent implements OnInit {
 	search: string;
 
 	constructor(private autocompleteService: AutocompleteService) {
-		this.onSaveLocation = new EventEmitter<any>();
+		this.onSaveLocation = new EventEmitter<LatLng>();
 	}
 
 	ngOnInit() {
@@ -40,7 +40,7 @@ export class SetLocationComponent implements OnInit {
 	saveLocation() {
 		let lat: number = this.lat;
 		let lng: number = this.lng;
-		this.onSaveLocation.emit({lat, lng});
+		this.onSaveLocation.emit(new LatLng(lat, lng));
 	}
 
 	setPosition(position) {
@@ -68,4 +68,8 @@ export class SetLocationComponent implements OnInit {
 		this.lng = this.lngCenter = lng;
 		this.addressArray = [];
 	}
+}
+
+class LatLng{
+	constructor(public lat: number, public lng: number){};
 }
